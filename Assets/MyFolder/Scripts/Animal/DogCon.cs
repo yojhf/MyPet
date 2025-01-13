@@ -1,0 +1,35 @@
+namespace MyPet.AI
+{
+    public class DogCon : AnimalCon
+    {
+        protected override void Start()
+        {
+            // StateMachine 생성, IdleState() 등록
+            base.Start();
+
+            // 개 고유의 상태 추가 등록
+            stateMachine.AddState(new SitState());
+            stateMachine.AddState(new DrinkState());
+        }
+
+        // Update is called once per frame
+        protected override void Update()
+        {
+            base.Update();
+        }
+
+        public void Idle()
+        {
+            ChangeState<IdleState>();
+        }
+        public void Sit()
+        {
+            ChangeState<SitState>();
+        }
+
+        public void Drink()
+        {
+            ChangeState<DrinkState>();
+        }
+    }
+}
